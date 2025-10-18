@@ -77,15 +77,32 @@ class ActivityViewModel : ViewModel() {
             _isLoading.value = false
         }
     }
-    fun clearForm(){
+
+    fun clearForm() {
         _formState.value = FormState()
+    }
+
+    /**
+     * Actualiza el estado del formulario
+     */
+    fun updateFormState(
+        name: String? = null,
+        date: LocalDate? = null,
+        time: LocalTime? = null,
+        description: String? = null
+    ) {
+        _formState.value = _formState.value.copy(
+            name = name ?: _formState.value.name,
+            date = date ?: _formState.value.date,
+            time = time ?: _formState.value.time,
+            description = description ?: _formState.value.description
+        )
     }
 }
 
-
-data class FormState(
-    val name: String = "",
-    val date: LocalDate = LocalDate.now(),
-    val time: LocalTime = LocalTime.now(),
-    val description: String = ""
-)
+    data class FormState(
+        val name: String = "",
+        val date: LocalDate = LocalDate.now(),
+        val time: LocalTime = LocalTime.now(),
+        val description: String = ""
+    )
