@@ -2,9 +2,10 @@ package com.mtovar.activityapp.data
 
 import java.time.LocalDate
 import java.time.LocalTime
+import java.util.UUID
 
 data class ActivityItem(
-    val id: Long = System.currentTimeMillis(),
+    val id: String = UUID.randomUUID().toString(),
     val name: String,
     val date: LocalDate, // formato dd/MM/yyyy
     val time: LocalTime, // formato HH:mm

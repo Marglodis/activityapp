@@ -78,6 +78,14 @@ class ActivityViewModel : ViewModel() {
         }
     }
 
+    /**
+     * Elimina una actividad por ID
+     */
+    fun deleteActivity(activityId: String) {
+        viewModelScope.launch {
+            _activities.value = _activities.value.filterNot { it.id == activityId }
+        }
+    }
     fun clearForm() {
         _formState.value = FormState()
     }
